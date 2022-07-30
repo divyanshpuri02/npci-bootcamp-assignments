@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xlmns : th="https://www.thymeleaf.org/">
+
+<head>
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Product Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <style>
+        .container-fluid {
+            display: inline-block;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h3 style="text-align: center ; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;">
+        <Menu>ADD PRODUCT MENU</Menu>
+    </h3>
+    <div class="container">
+        <a th:href="@{/productmanagement/newproduct}" class="btn btn-primary">Add Product</a>
+
+        <form th:action="@{/productmanagement/bycategory}" style="  margin-left:850px; ">
+            <div class="row">
+                <div class="col">
+                    <select class="form-select mb-3" style="width: 200px;" aria-label="Default select example"
+                        th:name="categoryid">
+                        <option selected value="0">Search by Category</option>
+                        <option value="1">Furniture</option>
+                        <option value="2">Electronics</option>
+                        <option value="3">Fashion</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-primary ">Search</button>
+                </div>
+            </div>
+        </form>
+
+        <form th:action="@{/productmanagement/byname}" style=" margin: left 900px">
+            <div class="input-group">
+                <input type="search" class="form-control rounded" placeholder="Search by name" th:name="name" />
+                <button type="button" class="btn btn-outline-primary">search</button>
+            </div>
+        </form>
+
+
+        <table class="table table-hover">
+            <tr>
+                <th scope="col"> Product ID </th>
+                <th scope="col"> Sku </th>
+                <th scope="col"> Product Name </th>
+                <th scope="col"> Description </th>
+                <th scope="col"> Unit Price </th>
+                <th scope="col"> Imageurl </th>
+                <th scope="col"> Active </th>
+                <th scope="col"> Unit in Stocks </th>
+                <th scope="col"> Date Created </th>
+                <th scope="col"> Last Updated </th>
+                <th scope="col">category id </th>
+                <th scope="col">Action</th>
+
+            </tr>
+            <tr th:each="product : ${PRODUCT}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.sku}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.unitprice}"></td>
+                <td><img th:src="@{product.imageurl}}" style="width:fit-content; height:fit-content"></td> 
+                <td th:text="${product.active}"></td>
+                <td th:text="${product.unitsinstock}"></td>
+                <td th:text="${product.datecreated}"></td>
+                <td th:text="${product.lastupdated}"></td>
+                <td th:text="${product.category}"></td>
+                <td>
+                    <a style="margin-left: 10px " class="btn btn-outline-success"
+                        th:href="@{/productmanagement/updateproduct(id = ${product.id} )}">Update</a>
+                    &nbsp;
+                    <a class="btn btn-outline-danger" th:href="@{/productmanagement/delete(id = ${product.id} )}"
+                        onclick="if(!(confirm('Are you sure to delete this Product'))) ">Delete</a>
+
+                </td>
+
+            </tr>
+    </div>
+    <br>
+</body>
+
+</html>

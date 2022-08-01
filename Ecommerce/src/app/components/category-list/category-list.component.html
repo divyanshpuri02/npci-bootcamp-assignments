@@ -1,0 +1,31 @@
+<div class="container-fluid" >
+  <h2 style="text-align: center; ">Category List</h2>
+  <table class = "table table-bordered table-hover">
+    <tr>
+      <th>Category ID</th>
+      <th>Category Name</th>
+    </tr>
+    <tr *ngFor = "let category of category">
+      <td>{{category.categoryid}}</td>
+      <td>{{category.categoryname}}</td>
+    </tr>
+  </table>
+</div>
+<div class="container" style="margin-left: 45rem;">
+  <h2 >Data Entry of Category</h2>
+  <form #deptData  = "ngForm" (ngSubmit) = "onSubmit()">
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Category ID</label></div>
+      <div class="col-sm-6"><input type="text" name="categoryid" id="" [(ngModel)] = "formModel.categoryid"></div>
+    </div>&nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Category Name</label></div>
+      <div class="col-sm-6"><input type="text" name="categoryname" id="" [(ngModel)] = "formModel.categoryname"></div>
+    </div>&nbsp;
+    <div class="row">
+      <div class="col-sm-8"><input type="submit" value="Submit" name="submit" class="btn btn-outline-success" style="margin-left: 10rem"></div>
+      </div>
+  </form>
+</div>
+

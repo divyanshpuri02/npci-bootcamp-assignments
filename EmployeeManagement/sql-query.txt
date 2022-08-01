@@ -1,0 +1,33 @@
+create database EmployeeManagement;
+use EmployeeManagement;
+create table Department(
+deptno int primary key,
+departmentname varchar(50),
+location varchar(50)
+);
+create table Employee(
+empno int primary key,
+ename text,
+job text,
+hiredate date,
+managerid int,
+salary bigint,
+commission int,
+deptno int,
+foreign key(deptno) references Department(deptno));
+
+insert into Department values(1, "ADMINISTRATION", "BIRMINGHAM"  );
+insert into Department values(2, "ACCOUNTS", "BIRMINGHAM"  );
+insert into Department values(3, "LABOR", "BIRMINGHAM"  );
+
+
+insert into Employee values(1001, "Tommy", "CEO at SHELBY COMPANY", "1819-12-17", 777, 100000, 20000, 1  );
+insert into Employee values(1002, "Arthur", "AACOUNTS HEAD", "1819-12-17", 1001, 100000, 10000, 2  );
+insert into Employee values(1003, "Johnny", "LABOUR HEAD", "1831-10-11",1002, 100000, 5000, 3 );
+
+
+select* from Department;
+select* from Employee;
+
+  
+Alter table EmployeeManagement rename column DeptNo to deptno;

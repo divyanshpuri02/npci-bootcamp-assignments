@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin-top: 10px;
+
+}
+.formdata{
+ margin-left: 400px;
+ font-weight: bold;
+}
+.button1{
+    margin-left: 150px;
+}
+h3{
+    margin-left: 150px;
+    color: red
+}

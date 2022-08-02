@@ -1,0 +1,141 @@
+<!--<div class="container-fluid">
+  <h2 style="text-align: center">Product List</h2>
+  <table class="table table-bordered table-primary table-hover" style="align-items:center;">
+    <tr>
+
+      <th>ID</th>
+      <th>SKU</th>
+      <th>Product Name</th>
+      <th>Description</th>
+      <th>Unit Price</th>
+      <th>Image</th>
+      <th>Active</th>
+      <th>Units In Stock</th>
+      <th>Date Created</th>
+      <th>Last Updated</th>
+      <th>Category Id</th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td>{{product.id }}</td>
+      <td>{{product.sku }}</td>
+      <td>{{product.name }}</td>
+      <td>{{product.description }}</td>
+      <td>{{product.unitprice }}</td>
+      <td>
+        <img src="{{product.imageurl }}" style="height: 120px; width: 120px" />
+      </td>
+      <td>{{product.active }}</td>
+      <td>{{product.unitinstock }}</td>
+      <td>{{product.datecreated }}</td>
+      <td>{{product.lastupdated }}</td>
+      <td>{{product.categoryid }}</td>
+    </tr>
+  </table>
+</div>
+<hr>
+&nbsp;
+<div class="container" style="margin-left: 40rem;">
+  <h2>Data Entry of Products</h2>
+  <form #productData="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-3"><label for="">Product Id</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="id" id="" [(ngModel)]="formModel.id" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">SKU</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="sku" id="" [(ngModel)]="formModel.sku" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Product Name</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="name" id="" [(ngModel)]="formModel.name" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Description</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="description" id="" [(ngModel)]="formModel.description" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Unit Price</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="unitprice" id="" [(ngModel)]="formModel.unitprice" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Image URL</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="imageurl" id="" [(ngModel)]="formModel.imageurl" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Active</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="active" id="" [(ngModel)]="formModel.active" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Unit In Stock</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="unitinstock" id="" [(ngModel)]="formModel.unitinstock" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Date Created</label></div>
+      <div class="col-sm-6">
+        <input type="date" name="datecreated" id="" [(ngModel)]="formModel.datecreated" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Last Updated</label></div>
+      <div class="col-sm-6">
+        <input type="date" name="lastupdated" id="" [(ngModel)]="formModel.lastupdated" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-3"><label for="">Category ID</label></div>
+      <div class="col-sm-6">
+        <input type="text" name="categoryid" id="" [(ngModel)]="formModel.categoryid" />
+      </div>
+    </div>
+    &nbsp;
+    <div class="row">
+      <div class="col-sm-8">
+        <input type="submit" value="Submit" name="submit" class="btn btn-outline-success" style="margin-left:10rem;" />
+      </div>
+    </div>
+  </form>
+</div>-->
+
+<div class="container" style="text-align: center;"><p style="font-weight: bold; margin-top: 20px; ">Products</p></div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin : 50px">
+  <div class="col" *ngFor = "let product of products; index as i">
+    <div class="card h-100">
+        <img src={{product.imageurl}} class="card-img-top" style="height: 180px; width: 180px;">
+        <a href = "#" class="nav-link" data-bs-toggle = "modal" [attr.data-bs-target]= "'#test' + i">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+        </div>
+        </a>
+        <div class="card-footer">
+          <a class = "btn btn-primary" style="float: right;" data-bs-toggle="modal" [attr.data-bs-target]= "'#test' + i">View Details</a>
+        </div>
+    </div>
+
